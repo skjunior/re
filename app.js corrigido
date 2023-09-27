@@ -1,0 +1,64 @@
+// Armazene as reservas em um array
+const reservas = [];
+
+// Função para exibir a lista de reservas
+function exibirReservas() {
+  const listaReservas = document.getElementById('lista-reservas');
+  listaReservas.innerHTML = ''; // Limpe a lista antes de exibir as reservas atualizadas
+
+  reservas.forEach(reserva => {
+    const li = document.createElement('li');
+    li.textContent = `Nome: ${reserva.nome}, Sala: ${reserva.sala}, Data: ${reserva.data}`;
+    listaReservas.appendChild(li);
+  });
+}
+
+// Função para adicionar uma reserva
+function adicionarReserva(nome, sala, data) {
+  reservas.push({ nome, sala, data });
+  exibirReservas();
+}
+
+// Manipulador de envio do formulário de reserva
+document.getElementById('reserva-form').addEventListener('submit', function (e) {
+  e.preventDefault(); // Evita o recarregamento da página
+  const nome = document.getElementById('nome').value;
+  const sala = document.getElementById('sala').value;
+  const data = document.getElementById('data').value;
+
+  adicionarReserva(nome, sala, data);
+  // Limpe os campos do formulário após a reserva
+  document.getElementById('nome').value = '';
+  document.getElementById('data').value = '';
+});
+
+// Exiba as reservas iniciais (se houver)
+exibirReservas();
+
+// Função para exibir a lista de reservas
+function exibirReservas() {
+    const listaReservas = document.getElementById('lista-reservas');
+    listaReservas.innerHTML = ''; // Limpe a lista antes de exibir as reservas atualizadas
+  
+    reservas.forEach((reserva, index) => {
+      const li = document.createElement('li');
+      li.textContent = `Nome: ${reserva.nome}, Sala: ${reserva.sala}, Data: ${reserva.data}`;
+  
+      // Botão para cancelar a reserva
+      const cancelarButton = document.createElement('button');
+      cancelarButton.textContent = 'Cancelar';
+      cancelarButton.addEventListener('click', () => {
+        cancelarReserva(index);
+      });
+  
+      li.appendChild(cancelarButton);
+      listaReservas.appendChild(li);
+    });
+  }
+  
+  // Função para cancelar uma reserva
+  function cancelarReserva(index) {
+    reservas.splice(index, 1);
+    exibirReservas();
+  }
+  
