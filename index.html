@@ -24,3 +24,45 @@
     <main class="hero"></main>
   </body>
 </html>
+
+//correção do antigo usado
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Reservas de Salas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Sistema de Reservas de Salas</h1>
+
+    <!-- Formulário para fazer uma reserva -->
+    <h2>Faça uma reserva:</h2>
+    <form id="reserva-form">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required />
+
+      <label for="sala">Sala:</label>
+      <select id="sala" required>
+        <option value="sala1">Sala 1</option>
+        <option value="sala2">Sala 2</option>
+        <option value="sala3">Sala 3</option>       
+      </select>
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" required />
+
+      <button type="submit">Reservar Sala</button>
+    </form>
+
+    <!-- Lista de reservas -->
+    <h2>Lista de Reservas:</h2>
+    <ul id="lista-reservas">
+      <!-- As reservas serão preenchidas dinamicamente com JavaScript -->
+    </ul>
+
+    <script src="app.js"></script>
+  </body>
+</html>
